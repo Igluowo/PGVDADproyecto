@@ -5,5 +5,6 @@ module com.mycompany.proyectopgvdad {
     requires java.logging;
 
     opens com.mycompany.proyectopgvdad to javafx.fxml;
+    opens controladores to javafx.fxml;
     exports com.mycompany.proyectopgvdad;
 }

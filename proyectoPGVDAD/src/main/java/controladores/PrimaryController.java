@@ -1,18 +1,24 @@
-package com.mycompany.proyectopgvdad;
+package controladores;
 
+import com.mycompany.proyectopgvdad.App;
 import java.io.IOException;
-import java.net.ServerSocket;
-import java.net.Socket;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
+import javafx.scene.control.Button;
+import javafx.scene.control.TabPane;
+import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
 public class PrimaryController implements Initializable {
 
@@ -21,6 +27,28 @@ public class PrimaryController implements Initializable {
 
     @FXML
     private PieChart graficoMemoria;
+    
+     @FXML
+    private Button botonMas;
+
+    @FXML
+    private ImageView tab;
+
+    @FXML
+    private TabPane tabPane;
+
+    @FXML
+    void cambiarVentana(ActionEvent event) throws IOException {
+        Node source = (Node) event.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
+        FXMLLoader escena = new FXMLLoader(App.class.getResource("Monitoreo.fxml"));
+        Parent looker = escena.load();
+        Scene scene = new Scene(looker);
+        stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -58,7 +86,7 @@ public class PrimaryController implements Initializable {
             while (true) {
                 // Simulacion de obtecion de datos prueba
                 double consumoCPU = obtenerConsumoCPU();
-                double disponible= 100 - consumoCPU; 
+                double disponible= 101 - consumoCPU; 
                 
                 // Actualizar la interfaz de usuario en el hilo de JavaFX
                 Platform.runLater(() -> {
@@ -69,7 +97,7 @@ public class PrimaryController implements Initializable {
                 });
 
                 // Esperar un tiempo antes de la próxima actualización (puedes ajustar esto según tus necesidades)
-                Thread.sleep(4000);
+                Thread.sleep(10000);
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
