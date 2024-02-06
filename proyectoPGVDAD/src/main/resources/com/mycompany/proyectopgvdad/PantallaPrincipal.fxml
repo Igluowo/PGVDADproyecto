@@ -13,7 +13,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="821.0" style="-fx-background-color: #595b5a;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.PrimaryController">
    <children>
-      <Label layoutX="281.0" layoutY="38.0" prefHeight="48.0" prefWidth="293.0" text="Bienvenido a ServerMag" textFill="WHITE">
+      <Label layoutX="281.0" layoutY="38.0" prefHeight="48.0" prefWidth="293.0" text="Monitoreando servidores" textFill="WHITE">
          <font>
             <Font name="Century Gothic" size="24.0" />
          </font>
