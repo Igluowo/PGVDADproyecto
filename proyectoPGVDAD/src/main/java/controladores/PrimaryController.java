@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -18,6 +19,7 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.TabPane;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class PrimaryController implements Initializable {
@@ -27,9 +29,12 @@ public class PrimaryController implements Initializable {
 
     @FXML
     private PieChart graficoMemoria;
-    
-     @FXML
+
+    @FXML
     private Button botonMas;
+
+    @FXML
+    private ImageView botonVolver;
 
     @FXML
     private ImageView tab;
@@ -80,14 +85,15 @@ public class PrimaryController implements Initializable {
 //            Logger.getLogger(PrimaryController.class.getName()).log(Level.SEVERE, null, ex);
 //        }
     }
-    
+
     private void actualizarConsumoCPU() {
         try {
             while (true) {
                 // Simulacion de obtecion de datos prueba
                 double consumoCPU = obtenerConsumoCPU();
-                double disponible= 101 - consumoCPU; 
-                
+                double disponible = 101 - consumoCPU;
+                double consumoMemoria = obtenerConsumoCPU();
+                double disponibleMemoria = 101 - consumoMemoria;
                 // Actualizar la interfaz de usuario en el hilo de JavaFX
                 Platform.runLater(() -> {
                     graficoCPU.getData().get(0).setPieValue(consumoCPU);
@@ -96,7 +102,13 @@ public class PrimaryController implements Initializable {
                     graficoCPU.getData().get(1).setName("Disponible: " + (int) disponible + "%");
                 });
 
-                // Esperar un tiempo antes de la próxima actualización (puedes ajustar esto según tus necesidades)
+                Platform.runLater(() -> {
+                    graficoMemoria.getData().get(0).setPieValue(consumoMemoria);
+                    graficoMemoria.getData().get(0).setName("Usada: " + (int) consumoMemoria + "%");
+                    graficoMemoria.getData().get(1).setPieValue(disponibleMemoria);
+                    graficoMemoria.getData().get(1).setName("Disponible: " + (int) disponibleMemoria + "%");
+                });
+                // Esperar un tiempo antes de la próxima actualización
                 Thread.sleep(10000);
             }
         } catch (InterruptedException e) {
@@ -104,8 +116,30 @@ public class PrimaryController implements Initializable {
         }
     }
 
+    @FXML
+    void volver(MouseEvent event) throws IOException {
+        Node source = (Node) event.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
+        FXMLLoader escena = new FXMLLoader(App.class.getResource("Bienvenida.fxml"));
+        Parent looker = escena.load();
+        Scene scene = new Scene(looker);
+        stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
+    }
+
     private double obtenerConsumoCPU() {
-        // Simulamos un valor entre 0 y 100 para propósitos de ejemplo
         return Math.random() * 100;
+    }
+
+    @FXML
+    void ponerManito(MouseEvent event) {
+        botonVolver.getScene().setCursor(Cursor.HAND);
+    }
+
+    @FXML
+    void quitarManito(MouseEvent event) {
+        botonVolver.getScene().setCursor(Cursor.DEFAULT);
     }
 }

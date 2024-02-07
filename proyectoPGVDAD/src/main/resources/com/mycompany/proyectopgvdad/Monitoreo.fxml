@@ -14,12 +14,12 @@
    <children>
       <ToolBar prefHeight="40.0" prefWidth="578.0" style="-fx-background-color: #14c3a2;">
         <items>
-            <Button fx:id="graficoCPU" mnemonicParsing="false" onAction="#cambiarVentana" text="Gráfico CPU" />
-            <Button fx:id="graficoRAM" mnemonicParsing="false" onAction="#cambiarVentana" text="Gráfico RAM" />
-            <Button fx:id="botonTemperatura" mnemonicParsing="false" onAction="#cambiarVentana" text="Temperatura" />
-            <Button fx:id="graficoRed" mnemonicParsing="false" onAction="#cambiarVentana" text="Tráfico de Red" />
-            <Button fx:id="monitorUSB" mnemonicParsing="false" onAction="#cambiarVentana" text="Monitor USB" />
-            <Button fx:id="generarInforme" mnemonicParsing="false" onAction="#generarInforme" text="Generar informe" />
+            <Button fx:id="graficoCPU" mnemonicParsing="false" onAction="#graficoPie" onMouseEntered="#ponerManito" onMouseExited="#quitarManito" text="Gráfico CPU" />
+            <Button fx:id="graficoRAM" mnemonicParsing="false" onAction="#graficoPie" onMouseEntered="#ponerManito" onMouseExited="#quitarManito" text="Gráfico RAM" />
+            <Button fx:id="botonTemperatura" mnemonicParsing="false" onAction="#temperatura" onMouseEntered="#ponerManito" onMouseExited="#quitarManito" text="Temperatura" />
+            <Button fx:id="graficoRed" mnemonicParsing="false" onAction="#graficoRed" onMouseEntered="#ponerManito" onMouseExited="#quitarManito" text="Tráfico de Red" />
+            <Button fx:id="monitorUSB" mnemonicParsing="false" onAction="#monitor" onMouseEntered="#ponerManito" onMouseExited="#quitarManito" text="Monitor USB" />
+            <Button fx:id="generarInforme" mnemonicParsing="false" onAction="#generarInforme" onMouseEntered="#ponerManito" onMouseExited="#quitarManito" text="Generar informe" />
         </items>
       </ToolBar>
       <Pane layoutX="51.0" layoutY="120.0" prefHeight="238.0" prefWidth="476.0" style="-fx-background-color: #14c3a2;">
@@ -39,7 +39,7 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <ImageView fx:id="volverBoton" fitHeight="40.0" fitWidth="39.0" layoutX="22.0" layoutY="53.0" onMouseClicked="#volver" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="volverBoton" fitHeight="40.0" fitWidth="39.0" layoutX="22.0" layoutY="53.0" onMouseClicked="#volver" onMouseEntered="#ponerManito" onMouseExited="#quitarManito" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../imagenes/volver.png" />
          </image>

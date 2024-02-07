@@ -12,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -43,9 +44,6 @@ public class MonitoreoController implements Initializable {
     private Button generarInforme;
 
     @FXML
-    private Button graficoAlmacenamiento;
-
-    @FXML
     private Button graficoCPU;
 
     @FXML
@@ -64,8 +62,36 @@ public class MonitoreoController implements Initializable {
     private ImageView volverBoton;
 
     @FXML
-    void cambiarVentana(ActionEvent event) {
+    void graficoPie(ActionEvent event) throws IOException {
+        App.tituloGrafico = (event.getSource().equals(graficoRAM)) ? "Monitoreo RAM" : "Monitoreo CPU";
+        cambiarVentana("GraficoPie.fxml", event);
+    }
 
+    @FXML
+    void graficoRed(ActionEvent event) throws IOException {
+        cambiarVentana("TraficoRed.fxml", event);
+    }
+
+    @FXML
+    void monitor(ActionEvent event) throws IOException {
+        cambiarVentana("MonitorUSB.fxml", event);
+    }
+
+    @FXML
+    void temperatura(ActionEvent event) throws IOException {
+        cambiarVentana("Temperatura.fxml", event);
+    }
+
+    private void cambiarVentana(String pantalla, ActionEvent event) throws IOException {
+        Node source = (Node) event.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
+        FXMLLoader escena = new FXMLLoader(App.class.getResource(pantalla));
+        Parent looker = escena.load();
+        Scene scene = new Scene(looker);
+        stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
@@ -85,5 +111,15 @@ public class MonitoreoController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+    
+    
+    @FXML
+    void ponerManito(MouseEvent event) {
+        monitorUSB.getScene().setCursor(Cursor.HAND);
+    }
 
+    @FXML
+    void quitarManito(MouseEvent event) {
+        monitorUSB.getScene().setCursor(Cursor.DEFAULT);
+    }
 }

@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="478.0" prefWidth="769.0" style="-fx-background-color: #595b5a;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/20.0.1" fx:controller="controladores.SobreNosotrosController">
+<AnchorPane id="AnchorPane" prefHeight="591.0" prefWidth="770.0" style="-fx-background-color: #595b5a;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.SobreNosotrosController">
    <children>
       <Pane prefHeight="74.0" prefWidth="769.0" style="-fx-background-color: #14c3a2;">
          <children>
@@ -17,9 +17,71 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <ImageView fitHeight="50.0" fitWidth="48.0" layoutX="698.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="botonVolver" fitHeight="50.0" fitWidth="48.0" layoutX="698.0" layoutY="13.0" onMouseClicked="#volver" onMouseEntered="#ponerManito" onMouseExited="#quitarManito" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../imagenes/volver.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutX="43.0" layoutY="139.0" prefHeight="200.0" prefWidth="254.0" style="-fx-background-color: #14c3a2;">
+         <children>
+            <Text layoutX="17.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ServerMag es un gestor de servidores que te permite monitorearlos en tiempo real. Es una buena solución cuando se requiera trabajar con múltiples servidores y monitorear su estado en todo momento" textAlignment="JUSTIFY" wrappingWidth="215.5546875">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="17.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¿Que es ServerMag?">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Pane layoutX="450.0" layoutY="139.0" prefHeight="200.0" prefWidth="254.0" style="-fx-background-color: #14c3a2;">
+         <children>
+            <Text layoutX="19.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nuestra empresa se llama IgluSoft, y nos dedicamos a la elaboración de programas útiles para el sector informático" textAlignment="JUSTIFY" wrappingWidth="215.5546875">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="35.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¿Quienes somos?">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Pane layoutX="43.0" layoutY="360.0" prefHeight="200.0" prefWidth="663.0" style="-fx-background-color: #14c3a2;">
+         <children>
+            <Text layoutX="283.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contacto">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text layoutX="14.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dirección: Calle Adonis 18, Santa Cruz de Tenerife. España" textAlignment="JUSTIFY" wrappingWidth="634.754638671875">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="14.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Teléfono: +34 933 56 23 31" textAlignment="JUSTIFY" wrappingWidth="634.754638671875">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="14.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Correo eléctronico: contacto@iglusoft.com" textAlignment="JUSTIFY" wrappingWidth="634.754638671875">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="14.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sitio web: www.iglusoft.com" textAlignment="JUSTIFY" wrappingWidth="634.754638671875">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="173.0" fitWidth="216.0" layoutX="467.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../imagenes/8000_3_05.jpg" />
                </image>
             </ImageView>
          </children>

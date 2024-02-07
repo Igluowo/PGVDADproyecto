@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectopgvdad.MonitorUSBController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #595b5a;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectopgvdad.MonitorUSBController">
    <children>
-      <Label layoutX="203.0" layoutY="23.0" prefHeight="48.0" prefWidth="208.0" text="Monitoreo de USB">
+      <Label layoutX="203.0" layoutY="23.0" prefHeight="48.0" prefWidth="208.0" text="Monitoreo de USB" textFill="WHITE">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Button layoutX="24.0" layoutY="34.0" mnemonicParsing="false" text="Volver" />
-      <TextArea layoutX="96.0" layoutY="100.0" prefHeight="264.0" prefWidth="422.0" />
+      <TextArea fx:id="area" editable="false" layoutX="96.0" layoutY="100.0" prefHeight="264.0" prefWidth="422.0" />
+      <ImageView fx:id="botonVolver" fitHeight="48.0" fitWidth="45.0" layoutX="37.0" layoutY="25.0" onMouseClicked="#volver" onMouseEntered="#ponerManito" onMouseExited="#quitarManito" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../imagenes/volver.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

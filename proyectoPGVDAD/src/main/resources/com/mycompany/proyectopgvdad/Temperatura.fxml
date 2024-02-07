@@ -1,25 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="251.0" prefWidth="538.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectopgvdad.TemperaturaController">
+<AnchorPane id="AnchorPane" prefHeight="251.0" prefWidth="550.0" style="-fx-background-color: #595b5a;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.TemperaturaController">
    <children>
-      <Label layoutX="140.0" layoutY="26.0" prefHeight="55.0" prefWidth="258.0" text="Temperatura de la CPU">
+      <Label layoutX="146.0" layoutY="26.0" prefHeight="55.0" prefWidth="258.0" text="Temperatura de la CPU" textFill="WHITE">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <ProgressBar id="Barra" layoutX="99.0" layoutY="116.0" prefHeight="70.0" prefWidth="338.0" progress="0.4" />
+      <ProgressBar id="Barra" fx:id="temperatura" layoutX="99.0" layoutY="116.0" prefHeight="70.0" prefWidth="338.0" progress="0.4" />
       <Text layoutX="247.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="40 Cº">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Button layoutX="28.0" layoutY="41.0" mnemonicParsing="false" text="Volver" />
+      <ImageView fx:id="botonVolver" fitHeight="48.0" fitWidth="45.0" layoutX="32.0" layoutY="31.0" onMouseClicked="#volver" onMouseEntered="#ponerManito" onMouseExited="#quitarManito" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../imagenes/volver.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
