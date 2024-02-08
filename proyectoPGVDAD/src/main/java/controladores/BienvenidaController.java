@@ -50,29 +50,38 @@ public class BienvenidaController implements Initializable {
     @FXML
     private Button botonSobre;
 
+    int contador;
+
     @FXML
     void abrirAyuda(ActionEvent event) {
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Información");
         alert.setHeaderText("Esta función todavía no está implementada");
         alert.setContentText("La añadiremos próximamente.");
-
-        // Mostrar el aviso
         alert.show();
     }
 
     @FXML
     void cambiarVentana(ActionEvent event) throws IOException {
-        String ventana = (event.getSource().equals(botonIniciar)) ? "PantallaPrincipal.fxml" : "SobreNosotros.fxml";
-        Node source = (Node) event.getSource();
-        Stage stage = (Stage) source.getScene().getWindow();
-        stage.close();
-        FXMLLoader escena = new FXMLLoader(App.class.getResource(ventana));
-        Parent looker = escena.load();
-        Scene scene = new Scene(looker);
-        stage = new Stage();
-        stage.setScene(scene);
-        stage.show();
+        if (contador < 1) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("No se han encontrado servidores");
+            alert.setContentText("Conecte al menos un servidor y vueva a intentarlo");
+            alert.show();
+            contador++;
+        } else {
+            String ventana = (event.getSource().equals(botonIniciar)) ? "PantallaPrincipal.fxml" : "SobreNosotros.fxml";
+            Node source = (Node) event.getSource();
+            Stage stage = (Stage) source.getScene().getWindow();
+            stage.close();
+            FXMLLoader escena = new FXMLLoader(App.class.getResource(ventana));
+            Parent looker = escena.load();
+            Scene scene = new Scene(looker);
+            stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
+        }
     }
 
     @FXML

@@ -10,6 +10,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -17,6 +18,7 @@ import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
@@ -37,44 +39,35 @@ public class TraficoRedController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        NumberAxis xAxis = new NumberAxis();
-        NumberAxis yAxis = new NumberAxis();
-        xAxis.setLabel("Tiempo (segundos)");
-        yAxis.setLabel("Tráfico de Red");
 
-        // Crear serie de datos
-        series = new XYChart.Series<>();
-        series.setName("Trafico de Red");
+        // Crear la serie de datos
+        XYChart.Series<String, Number> series = new XYChart.Series<>();
+        series.setName("Tráfico de Red");
 
-        // Añadir serie al gráfico
+        // Agregar datos a la serie
+        series.getData().add(new XYChart.Data<>("5 minutos", 100));
+        series.getData().add(new XYChart.Data<>("4 minutos", 150));
+        series.getData().add(new XYChart.Data<>("3 minutos", 120));
+        series.getData().add(new XYChart.Data<>("2 minutos", 200));
+        series.getData().add(new XYChart.Data<>("1 minuto", 180));
+
+        // Limpiar datos existentes (puede ser opcional según tus necesidades)
+        grafica.getData().clear();
+
+        // Configurar categorías en el eje X
+        CategoryAxis xAxis = (CategoryAxis) grafica.getXAxis();
+        xAxis.setCategories(FXCollections.observableArrayList("5 minutos", 
+                "4 minutos", "3 minutos", "2 minutos", "1 minuto"));
+
+        // Agregar la serie al gráfico
         grafica.getData().add(series);
-
-        // Crear animación
-        Timeline timeline = new Timeline(
-                new KeyFrame(Duration.millis(1000), event -> {
-                    // Simular datos de tráfico de red (números aleatorios en este ejemplo)
-                    double datosTrafico = Math.random() * 100;
-                    // Obtener el tiempo actual en segundos (simulado)
-                    double tiempo = System.currentTimeMillis() / 1000.0;
-                    // Añadir punto a la serie de datos
-                    series.getData().add(new XYChart.Data<>(tiempo, datosTrafico));
-                    // Limitar la cantidad de puntos para mantener la visualización manejable
-                    if (series.getData().size() > 20) {
-                        series.getData().remove(0);
-                    }
-                })
-        );
-        timeline.setCycleCount(Timeline.INDEFINITE);
-        timeline.play();
     }
-    
-    private XYChart.Series<Number, Number> series;
 
     @FXML
     private ImageView botonVolver;
 
     @FXML
-    private LineChart<Number, Number> grafica;
+    private LineChart<String, Number> grafica;
 
     @FXML
     void volver(MouseEvent event) throws IOException {

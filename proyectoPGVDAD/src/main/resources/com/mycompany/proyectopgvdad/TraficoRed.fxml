@@ -19,7 +19,7 @@
       </Label>
       <Pane layoutX="50.0" layoutY="100.0" prefHeight="272.0" prefWidth="517.0" style="-fx-background-color: #14c3a2;">
          <children>
-            <LineChart fx:id="grafica" layoutX="86.0" layoutY="20.0" legendVisible="false" prefHeight="232.0" prefWidth="323.0" title="Tráfico de Red">
+            <LineChart fx:id="grafica" layoutX="52.0" layoutY="14.0" legendVisible="false" prefHeight="272.0" prefWidth="413.0" title="Tráfico de Red">
                <xAxis>
                   <CategoryAxis side="BOTTOM" />
                </xAxis>

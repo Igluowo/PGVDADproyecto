@@ -6,7 +6,10 @@ package controladores;
 
 import com.mycompany.proyectopgvdad.App;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,6 +24,11 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import net.sf.jasperreports.engine.JREmptyDataSource;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  * FXML Controller class
@@ -111,8 +119,30 @@ public class MonitoreoController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-    
-    
+
+    @FXML
+    void imprimirInforme(ActionEvent event) throws IOException {
+        Map<String, Object> parametros = new HashMap<>();
+        parametros.put("modelo", "Intel Core i5 11th");
+        parametros.put("numero", "1");
+        parametros.put("serial", "123781246182746187347128");
+        parametros.put("frecuencia", "3,50GHz");
+        parametros.put("memoria", "16GB");
+        parametros.put("disponibleRAM", 60);
+        parametros.put("disponibleCPU", 82);
+        parametros.put("ocupadoRAM", 40);
+        parametros.put("ocupadoCPU", 18);
+        parametros.put("temperatura", 25);
+        InputStream inputStream = getClass().getResourceAsStream("/servidores.jasper");
+        try {
+            JasperPrint imprimir = JasperFillManager.fillReport(inputStream, parametros, new JREmptyDataSource());
+            JasperViewer.viewReport(imprimir, false);
+        } catch (JRException e) {
+    System.out.println("Error al llenar el informe JasperReports.");
+    e.printStackTrace();
+}
+    }
+
     @FXML
     void ponerManito(MouseEvent event) {
         monitorUSB.getScene().setCursor(Cursor.HAND);
